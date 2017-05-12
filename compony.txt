@@ -1,0 +1,36 @@
+//Database for All Tables
+
+create database Compony;
+
+use Compony
+
+
+//This table for Example number 1
+
+
+create table Product(ProductName varchar(200),ProductCategory varchar(200),Quantity int,Price int,ProductDescription varchar(500))
+
+select * from Product
+
+//This table for example number 3
+
+
+create table ProductOrder(OrderId varchar(50) primary key,OrderDate datetime,OrderNumber int,CustomerId varchar(50),TotalAmmount varchar(50))
+
+create table OrderItem(OrderItemId varchar(50) primary key,OrderId varchar(50) references ProductOrder(OrderId), ProductId varchar(50),UnitPrice varchar(50),Quantity int)
+
+create table ProductNew(ProductId varchar(50) primary key,ProductName varchar(50),SupplierId varchar(50),UnitPrice varchar(50),Package varchar(50))
+
+
+//This Select Statment Actual Answer of Question 3
+
+select OrderItem.Quantity,
+ProductNew.ProductName,
+OrderItem.UnitPrice
+from 
+OrderItem
+inner join
+ProductNew
+on
+ OrderItem.OrderItemId=
+ProductNew.ProductId
